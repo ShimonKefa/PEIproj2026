@@ -8,7 +8,7 @@ namespace APIPEITESTE01.Enviroment
         public  string FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PEIPROJ2026");
 
         public  string DatabasePath => Path.Combine(FolderPath, "PEIPROJ2026.db");
-        public string API_KEY = "AIzaSyB18l6Suhme09E8riVkwAQvHQcoPu3n4Q8";
+        public string API_KEY = " sem chave";
         public EnviromentServices()
         {
             try
