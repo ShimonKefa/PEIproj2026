@@ -10,8 +10,8 @@ namespace APIPEITESTE01.Services
 {
     public class AIService
     {
-       private readonly SelectServices _select;
-       private readonly InsertServices _insert;
+       private readonly SelectServices _select = new SelectServices();
+       private readonly InsertServices _insert = new InsertServices();
          public AIService()
         {
             _select = new SelectServices();
@@ -48,16 +48,18 @@ namespace APIPEITESTE01.Services
                 IntencityWorkOut.BAIXO => "Baixa",
                 _ => "Baixa"
             };
+
             //Essa '?' tem a função de tratar qualquer entrada nula nesse cenário.
             var grupoMuscular = workOut.Days.FirstOrDefault()?.bodyParts switch
             {
+                BodyParts.FULL_BODY => "Corpo Todo (Membros superiores, inferiores e core)",
                 BodyParts.SUPERIORES => "membros superiores (peito, costas, ombros e braços)",
                 BodyParts.INFERIORES => "membros inferiores (quadríceps, posterior, glúteo e panturrilha)",
                 BodyParts.PERNAS     => "pernas",
                 BodyParts.CORE       => "core e abdômen",
-                _ => "corpo completo"
+                _ => "Corpo Todo (Membros superiores, inferiores e core)"
             };
-
+                    //esse prompt constroi o corpo do json 
                     return $@"
                     Você é um personal trainer especialista.
                     Gere um treino personalizado em JSON puro, sem markdown, sem explicações.
